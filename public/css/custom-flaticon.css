@@ -1,0 +1,112 @@
+/* Custom styles for flaticon icons */
+
+/* Promo Section Icons */
+.promo-card .promo-icon i {
+  font-size: 48px;
+  color: #F59946;
+  transition: all 0.3s ease;
+}
+
+.promo-card:hover .promo-icon i {
+  transform: scale(1.2);
+}
+
+/* Disaster Types Section */
+.disaster-type-card {
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+  background-color: #fff;
+}
+
+.disaster-type-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.disaster-type-card .disaster-icon i {
+  transition: all 0.3s ease;
+}
+
+.disaster-type-card:hover .disaster-icon i {
+  transform: rotate(10deg);
+}
+
+/* Emergency Contacts Section */
+.contact-card {
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateX(5px);
+}
+
+.contact-card .contact-icon i {
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon i {
+  transform: scale(1.1);
+}
+
+/* General Flaticon Styles */
+i[class^="flaticon-"] {
+  display: inline-block;
+}
+
+.link.style1 i[class^="flaticon-"] {
+  margin-left: 5px;
+  font-size: 14px;
+  position: relative;
+  top: 1px;
+  transition: transform 0.3s ease;
+}
+
+.link.style1:hover i[class^="flaticon-"] {
+  transform: translateX(5px);
+}
+
+/* Button with flaticon */
+.btn i[class^="flaticon-"] {
+  margin-right: 8px;
+  font-size: 16px;
+  position: relative;
+  top: 1px;
+}
+
+/* Flaticon colors */
+.flaticon-primary {
+  color: #338F7A;
+}
+
+.flaticon-accent {
+  color: #F59946;
+}
+
+.flaticon-light {
+  color: #ffffff;
+}
+
+.flaticon-dark {
+  color: #222222;
+}
+
+/* Flaticon sizes */
+.flaticon-xs {
+  font-size: 16px;
+}
+
+.flaticon-sm {
+  font-size: 24px;
+}
+
+.flaticon-md {
+  font-size: 36px;
+}
+
+.flaticon-lg {
+  font-size: 48px;
+}
+
+.flaticon-xl {
+  font-size: 64px;
+}

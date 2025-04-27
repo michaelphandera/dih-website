@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;500;600;700&family=Spline+Sans:wght@300;400;500;600;700&display=swap");
+
+/* Import CSS files from css folder */
+@import '/css/bootstrap.min.css';
+@import '/css/flaticon.css';
+@import '/css/remixicon.css';
+@import '/css/owl.carousel.min.css';
+@import '/css/owl-theme-default-min.css';
+@import '/css/odometer.min.css';
+@import '/css/fancybox.min.css';
+@import '/css/aos.css';
+@import '/css/responsive.css';
+@import '/css/dark-theme.css';
+@import '/css/custom-flaticon.css';
+@import '/css/style.css';
+
+/* Import Leaflet CSS */
+@import '../styles/leaflet.css';
+@import '../styles/map.css';
+
+/* Global styles */
+
+:root {
+  --primary: #338F7A;
+  --secondary: #338F7A;
+  --accent: #F59946;
+  --dark: #222222;
+  --light: #f8f9fa;
+  --border-color: #dee2e6;
+}
+

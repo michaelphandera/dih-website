@@ -1,0 +1,161 @@
+/* Map Component Styles */
+.leaflet-container,
+.leaflet-map-container {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 250px !important;
+  border-radius: 4px !important;
+  z-index: 1 !important; /* Ensure proper z-index */
+  position: relative !important;
+}
+
+/* Fix for map panes */
+.leaflet-map-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-pane,
+.leaflet-overlay-pane,
+.leaflet-shadow-pane,
+.leaflet-marker-pane,
+.leaflet-popup-pane,
+.leaflet-tooltip-pane {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+
+.district-map {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Fix for map tiles not loading */
+.leaflet-tile {
+  visibility: inherit !important;
+}
+
+/* Fix for map controls */
+.leaflet-control-container {
+  position: absolute;
+  z-index: 1000;
+}
+
+/* Fix for markers */
+.leaflet-marker-icon {
+  z-index: 1000;
+}
+
+/* Fix for popups */
+.leaflet-popup {
+  z-index: 1001;
+}
+
+/* District marker styles */
+.district-marker {
+  background-color: #F59946;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 12px !important;
+  height: 12px !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.district-marker.active {
+  background-color: #338F7A;
+  width: 16px !important;
+  height: 16px !important;
+  z-index: 1000;
+}
+
+/* Popup styles */
+.district-popup .leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.2);
+}
+
+.district-popup .leaflet-popup-content {
+  margin: 12px;
+  min-width: 200px;
+}
+
+.district-popup .district-name {
+  font-weight: bold;
+  color: #338F7A;
+  margin-bottom: 5px;
+}
+
+.district-popup .district-stats {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.district-popup .district-risk {
+  margin-top: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.district-popup .risk-low {
+  background-color: #e6f7f2;
+  color: #338F7A;
+}
+
+.district-popup .risk-medium {
+  background-color: #fff3e0;
+  color: #F59946;
+}
+
+.district-popup .risk-high {
+  background-color: #ffebee;
+  color: #f44336;
+}
+
+/* District Heatmap Styles */
+.leaflet-interactive {
+  transition: all 0.3s ease;
+}
+
+.district-heatmap-low {
+  stroke: #ffe0b2;
+  fill: #ffe0b2;
+  fill-opacity: 0.2;
+}
+
+.district-heatmap-medium {
+  stroke: #ffab40;
+  fill: #ffab40;
+  fill-opacity: 0.2;
+}
+
+.district-heatmap-high {
+  stroke: #ff6e40;
+  fill: #ff6e40;
+  fill-opacity: 0.2;
+}
+
+/* Add a pulsing animation to the selected district */
+@keyframes pulse {
+  0% {
+    stroke-width: 2;
+    stroke-opacity: 1;
+  }
+  50% {
+    stroke-width: 3;
+    stroke-opacity: 0.8;
+  }
+  100% {
+    stroke-width: 2;
+    stroke-opacity: 1;
+  }
+}
+
+.leaflet-interactive.selected-district {
+  animation: pulse 2s infinite;
+}

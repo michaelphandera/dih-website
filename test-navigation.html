@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Menu Test</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Header styles */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            background-color: #212121;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            height: 64px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-color: #ccc;
+            border-radius: 50%;
+        }
+        
+        .logo-text {
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        
+        /* Navigation styles */
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .nav-item {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+        }
+        
+        .nav-link:hover {
+            color: #ccc;
+        }
+        
+        .dropdown-icon {
+            margin-left: 0.25rem;
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* Dropdown styles */
+        .dropdown {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            margin-top: 0.5rem;
+            width: 14rem;
+            background-color: white;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            display: none;
+            transition: all 0.2s;
+        }
+        
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            display: block;
+            font-size: 0.875rem;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f3f4f6;
+            color: #000;
+        }
+        
+        .dropdown-divider {
+            height: 1px;
+            background-color: #e5e7eb;
+            margin: 0.25rem 0;
+        }
+        
+        /* Mega menu styles */
+        .mega-menu {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            margin-top: 0.5rem;
+            min-width: 600px;
+            background-color: white;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            display: none;
+            padding: 1rem;
+            transform: translateX(-25%);
+            transition: all 0.2s;
+        }
+        
+        .nav-item:hover .mega-menu {
+            display: flex;
+        }
+        
+        .mega-menu-column {
+            width: 12rem;
+            padding: 0 0.5rem;
+            border-right: 1px solid #e5e7eb;
+        }
+        
+        .mega-menu-column:last-child {
+            border-right: none;
+        }
+        
+        /* Search styles */
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .search-button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .search-input {
+            width: 200px;
+            padding: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 0.25rem;
+        }
+        
+        .search-input::placeholder {
+            color: #9ca3af;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 100;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .mobile-nav-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0.5rem 0;
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 0.5rem 0.25rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .mobile-menu-trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0.25rem;
+            cursor: pointer;
+        }
+        
+        .mobile-submenu {
+            padding-left: 1rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            display: none;
+        }
+        
+        .mobile-submenu-item {
+            display: flex;
+            align-items: center;
+            padding: 0.25rem 0;
+            font-size: 0.875rem;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .mobile-submenu-item:hover {
+            color: #26a69a;
+        }
+        
+        .mobile-submenu-icon {
+            margin-right: 0.25rem;
+            width: 12px;
+            height: 12px;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <button class="mobile-menu-button" id="mobile-menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <div class="logo"></div>
+                    <span class="logo-text">Mauritius NDMC</span>
+                </div>
+                
+                <nav class="desktop-nav">
+                    <div class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </div>
+                    
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">
+                            About Us
+                            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown">
+                            <a href="/about" class="dropdown-item">Know Us</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/faq" class="dropdown-item">FAQs</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">
+                            Councils
+                            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-column">
+                                <a href="/council" class="dropdown-item">Agriculture</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Civil Service</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Education</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">External Affairs</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Disaster Management</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <a href="/council" class="dropdown-item">External Communications</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Finance</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Fisheries</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Gender Equality</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Health</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <a href="/council" class="dropdown-item">Home Affairs</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Housing and Lands</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Local Government</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Oceanography</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <a href="/council" class="dropdown-item">Public Infrastructure</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Public Utilities</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Social Security</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/council" class="dropdown-item">Tourism</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">
+                            Districts
+                            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-column">
+                                <a href="/district" class="dropdown-item">Port Louis</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/district" class="dropdown-item">Black River</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/district" class="dropdown-item">Flacq</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/district" class="dropdown-item">Grand Port</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <a href="/district" class="dropdown-item">Moka</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/district" class="dropdown-item">Pamplemousses</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/district" class="dropdown-item">Plaines Wilhems</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/district" class="dropdown-item">Rivière du Rempart</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <a href="/district" class="dropdown-item">Savanne</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/district" class="dropdown-item">Rodrigues</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/district" class="dropdown-item">Agalega</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/district" class="dropdown-item">Cargados Carajos</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">
+                            Outer Islands
+                            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown">
+                            <a href="/district" class="dropdown-item">Rodrigues Island</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/district" class="dropdown-item">Agaléga Islands</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/district" class="dropdown-item">Saint Brandon</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/district" class="dropdown-item">Tromelin Island</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">
+                            Resources
+                            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown">
+                            <a href="/documents" class="dropdown-item">Infographics</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/documents" class="dropdown-item">Documents</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/documents" class="dropdown-item">Interactive Maps</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/documents" class="dropdown-item">Forms</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/documents" class="dropdown-item">User Manuals</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item">
+                        <a href="/contact" class="nav-link">Contact Us</a>
+                    </div>
+                </nav>
+                
+                <div class="search-container">
+                    <button class="search-button" id="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="logo-container">
+                <div class="logo"></div>
+                <span class="logo-text">Mauritius NDMC</span>
+            </div>
+            <button class="mobile-menu-close" id="mobile-menu-close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <nav>
+            <div class="mobile-nav-item">
+                <a href="/" class="mobile-nav-link">Home</a>
+            </div>
+            
+            <div class="mobile-nav-item">
+                <div class="mobile-menu-trigger" data-target="about-submenu">
+                    <span>About Us</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                </div>
+                <div class="mobile-submenu" id="about-submenu">
+                    <a href="/about" class="mobile-submenu-item">
+                        <svg class="mobile-submenu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                        Know Us
+                    </a>
+                    <a href="/faq" class="mobile-submenu-item">
+                        <svg class="mobile-submenu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                        FAQs
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Add more mobile menu items for Councils, Districts, etc. -->
+        </nav>
+    </div>
+    
+    <main style="padding: 2rem;">
+        <h1>Navigation Menu Test</h1>
+        <p>This is a test page for the navigation menu structure. Hover over the menu items to see the dropdowns and mega menus.</p>
+    </main>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.style.display = 'block';
+        });
+        
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.style.display = 'none';
+        });
+        
+        // Mobile submenu toggle
+        const mobileMenuTriggers = document.querySelectorAll('.mobile-menu-trigger');
+        
+        mobileMenuTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const targetId = trigger.getAttribute('data-target');
+                const targetSubmenu = document.getElementById(targetId);
+                
+                if (targetSubmenu.style.display === 'block') {
+                    targetSubmenu.style.display = 'none';
+                    trigger.querySelector('svg').innerHTML = '<line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>';
+                } else {
+                    targetSubmenu.style.display = 'block';
+                    trigger.querySelector('svg').innerHTML = '<line x1="5" y1="12" x2="19" y2="12"></line>';
+                }
+            });
+        });
+        
+        // Search toggle
+        const searchButton = document.getElementById('search-button');
+        const searchContainer = document.querySelector('.search-container');
+        
+        searchButton.addEventListener('click', () => {
+            if (searchContainer.querySelector('.search-input')) {
+                // Remove search input
+                searchContainer.querySelector('.search-input').remove();
+                searchButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>';
+            } else {
+                // Add search input
+                const searchInput = document.createElement('input');
+                searchInput.type = 'search';
+                searchInput.placeholder = 'Search...';
+                searchInput.className = 'search-input';
+                searchContainer.insertBefore(searchInput, searchButton);
+                
+                searchButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+                
+                searchInput.focus();
+            }
+        });
+    </script>
+</body>
+</html>
