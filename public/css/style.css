@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------
     Theme Name: NDRRMC
-    Theme URI: 
-    Description: NDRRMC Template 
+    Theme URI:
+    Description: NDRRMC Template
     Author: NDRRMC developer
-    Author URI: 
+    Author URI:
     Version: 2.0
 -------------------------------------------------------------*/
 /*--------------------------------
      =====Table Of Contents====
 
-1.  General Styles 
+1.  General Styles
 2.  Mixins CSS
 3.  Back To Top Button CSS
 4.  Preloader CSS
@@ -29,7 +29,7 @@
 ----------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;500;600;700&amp;family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap");
 /*---------------------------------
-            General Styles 
+            General Styles
 -----------------------------------*/
 * {
   box-sizing: border-box;
@@ -71,13 +71,15 @@ input[type=number] {
 a {
   color: #000;
   text-transform: inherit;
-  text-decoration: none;
+  text-decoration: none !important; /* Added !important to ensure no underline */
   transition: all 0.3s ease;
 }
 
 a:hover,
-a :focus {
-  text-decoration: none;
+a:focus,
+a:active,
+a:visited {
+  text-decoration: none !important; /* Added !important to ensure no underline */
   box-shadow: none;
   color: #000;
 }
@@ -1408,7 +1410,7 @@ select {
 }
 
 /*---------------------------------
-        Header CSS 
+        Header CSS
 -----------------------------------*/
 @keyframes fadeInDown {
   0% {
@@ -2194,7 +2196,7 @@ select {
   }
 }
 /*---------------------------------
-       Breadcrumb CSS 
+       Breadcrumb CSS
 -----------------------------------*/
 .content-wrapper {
   margin-top: 139px;
@@ -5586,7 +5588,7 @@ article {
 }
 
 /*---------------------------------
-        Footer CSS 
+        Footer CSS
 -----------------------------------*/
 .footer-wrap {
   position: relative;

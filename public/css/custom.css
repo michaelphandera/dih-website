@@ -1,0 +1,19 @@
+/* Custom CSS overrides */
+
+/* Remove underlines from all anchor tags */
+a, a:hover, a:focus, a:active, a:visited,
+.nav-link, .nav-link:hover, .nav-link:focus, .nav-link:active,
+.dropdown-item, .dropdown-item:hover, .dropdown-item:focus, .dropdown-item:active,
+.btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
+  text-decoration: none !important;
+}
+
+/* Override Bootstrap's default link styling */
+.btn-link {
+  text-decoration: none !important;
+}
+
+/* Override any other framework's link styling */
+[href], [href]:hover, [href]:focus, [href]:active {
+  text-decoration: none !important;
+}

@@ -16,7 +16,7 @@ export function Header() {
               </div>
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <a href="#" className="nav-link">
+                  <a href="/" className="nav-link">
                     Home
                   </a>
                 </li>
@@ -29,64 +29,64 @@ export function Header() {
                     <div className="row g-0">
                       <div className="col-md-3">
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Agriculture</a>
+                          <a href="councils" className="nav-link">Agriculture</a>
                         </li>
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Civil Service</a>
+                          <a href="councils" className="nav-link">Civil Service</a>
                         </li>
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Education</a>
+                          <a href="councils" className="nav-link">Education</a>
                         </li>
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">External Affairs</a>
+                          <a href="councils" className="nav-link">External Affairs</a>
                         </li>
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Disaster Management</a>
-                        </li>
-                      </div>
-                      <div className="col-md-3">
-                        <li className="nav-item">
-                          <a href="council.html" className="nav-link">External Communications</a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="council.html" className="nav-link">Finance</a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="council.html" className="nav-link">Fisheries</a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="council.html" className="nav-link">Gender Equality</a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="council.html" className="nav-link">Health</a>
+                          <a href="councils" className="nav-link">Disaster Management</a>
                         </li>
                       </div>
                       <div className="col-md-3">
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Home Affairs</a>
+                          <a href="councils" className="nav-link">External Communications</a>
                         </li>
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Housing and Lands</a>
+                          <a href="councils" className="nav-link">Finance</a>
                         </li>
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Local Government</a>
+                          <a href="councils" className="nav-link">Fisheries</a>
                         </li>
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Oceanography</a>
+                          <a href="councils" className="nav-link">Gender Equality</a>
+                        </li>
+                        <li className="nav-item">
+                          <a href="councils" className="nav-link">Health</a>
                         </li>
                       </div>
                       <div className="col-md-3">
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Public Infrastructure</a>
+                          <a href="councils" className="nav-link">Home Affairs</a>
                         </li>
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Public Utilities</a>
+                          <a href="councils" className="nav-link">Housing and Lands</a>
                         </li>
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Social Security</a>
+                          <a href="councils" className="nav-link">Local Government</a>
                         </li>
                         <li className="nav-item">
-                          <a href="council.html" className="nav-link">Tourism</a>
+                          <a href="councils" className="nav-link">Oceanography</a>
+                        </li>
+                      </div>
+                      <div className="col-md-3">
+                        <li className="nav-item">
+                          <a href="councils" className="nav-link">Public Infrastructure</a>
+                        </li>
+                        <li className="nav-item">
+                          <a href="councils" className="nav-link">Public Utilities</a>
+                        </li>
+                        <li className="nav-item">
+                          <a href="councils" className="nav-link">Social Security</a>
+                        </li>
+                        <li className="nav-item">
+                          <a href="councils" className="nav-link">Tourism</a>
                         </li>
                       </div>
                     </div>
@@ -102,44 +102,44 @@ export function Header() {
                     <div className="row g-0">
                       <div className="col-md-4">
                         <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Port Louis</a>
+                          <a href="districts" className="nav-link">Port Louis</a>
                         </li>
                         <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Black River</a>
+                          <a href="districts" className="nav-link">Black River</a>
                         </li>
                         <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Flacq</a>
+                          <a href="districts" className="nav-link">Flacq</a>
                         </li>
                         <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Grand Port</a>
-                        </li>
-                      </div>
-                      <div className="col-md-4">
-                        <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Moka</a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Pamplemousses</a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Plaines Wilhems</a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Rivière du Rempart</a>
+                          <a href="districts" className="nav-link">Grand Port</a>
                         </li>
                       </div>
                       <div className="col-md-4">
                         <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Savanne</a>
+                          <a href="districts" className="nav-link">Moka</a>
                         </li>
                         <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Rodrigues</a>
+                          <a href="districts" className="nav-link">Pamplemousses</a>
                         </li>
                         <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Agalega</a>
+                          <a href="districts" className="nav-link">Plaines Wilhems</a>
                         </li>
                         <li className="nav-item">
-                          <a href="district_details.html" className="nav-link">Cargados Carajos</a>
+                          <a href="districts" className="nav-link">Rivière du Rempart</a>
+                        </li>
+                      </div>
+                      <div className="col-md-4">
+                        <li className="nav-item">
+                          <a href="districts" className="nav-link">Savanne</a>
+                        </li>
+                        <li className="nav-item">
+                          <a href="districts" className="nav-link">Rodrigues</a>
+                        </li>
+                        <li className="nav-item">
+                          <a href="districts" className="nav-link">Agalega</a>
+                        </li>
+                        <li className="nav-item">
+                          <a href="districts" className="nav-link">Cargados Carajos</a>
                         </li>
                       </div>
                     </div>
@@ -153,16 +153,16 @@ export function Header() {
                   </a>
                   <ul className="dropdown-menu">
                     <li className="nav-item">
-                      <a href="district_details.html" className="nav-link">Rodrigues Island</a>
+                      <a href="districts" className="nav-link">Rodrigues Island</a>
                     </li>
                     <li className="nav-item">
-                      <a href="district_details.html" className="nav-link">Agaléga Islands</a>
+                      <a href="districts" className="nav-link">Agaléga Islands</a>
                     </li>
                     <li className="nav-item">
-                      <a href="district_details.html" className="nav-link">Saint Brandon</a>
+                      <a href="districts" className="nav-link">Saint Brandon</a>
                     </li>
                     <li className="nav-item">
-                      <a href="district_details.html" className="nav-link">Tromelin Island</a>
+                      <a href="districts" className="nav-link">Tromelin Island</a>
                     </li>
                   </ul>
                 </li>
@@ -173,19 +173,19 @@ export function Header() {
                   </a>
                   <ul className="dropdown-menu">
                     <li className="nav-item">
-                      <a href="documents.html" className="nav-link">Infographics</a>
+                      <a href="documents" className="nav-link">Infographics</a>
                     </li>
                     <li className="nav-item">
-                      <a href="documents.html" className="nav-link">Documents</a>
+                      <a href="documents" className="nav-link">Documents</a>
                     </li>
                     <li className="nav-item">
-                      <a href="documents.html" className="nav-link">Interactive Maps</a>
+                      <a href="documents" className="nav-link">Interactive Maps</a>
                     </li>
                     <li className="nav-item">
-                      <a href="documents.html" className="nav-link">Forms</a>
+                      <a href="documents" className="nav-link">Forms</a>
                     </li>
                     <li className="nav-item">
-                      <a href="documents.html" className="nav-link">User Manuals</a>
+                      <a href="documents" className="nav-link">User Manuals</a>
                     </li>
                   </ul>
                 </li>

@@ -21,6 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en" data-bs-theme="light">
       <head>
+        {/* Inline style to remove underlines from all links */}
+        <style>
+          {`
+            a, a:hover, a:focus, a:active, a:visited {
+              text-decoration: none !important;
+            }
+          `}
+        </style>
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -68,6 +76,34 @@ export default function RootLayout({
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
           crossOrigin="anonymous"
         />
+
+        {/* Initialize Bootstrap Components */}
+        <Script id="bootstrap-init">
+          {`
+            document.addEventListener('DOMContentLoaded', function() {
+              // Initialize all tooltips
+              var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+              var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+              });
+
+              // Initialize all popovers
+              var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+              var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl);
+              });
+
+              // Initialize all tabs
+              var tabElList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tab"], [data-bs-toggle="pill"]'));
+              tabElList.forEach(function(tabEl) {
+                tabEl.addEventListener('click', function (event) {
+                  event.preventDefault();
+                  new bootstrap.Tab(tabEl).show();
+                });
+              });
+            });
+          `}
+        </Script>
 
         {/* AOS Animation */}
         <Script src="https://unpkg.com/aos@2.3.1/dist/aos.js" />

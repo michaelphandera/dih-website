@@ -1,0 +1,151 @@
+/* Tab Styles */
+
+/* Common styles for all tabs */
+.nav-tabs,
+.nav-pills {
+  border-bottom: none !important;
+  margin-bottom: 1rem !important;
+}
+
+.nav-tabs .nav-link,
+.nav-pills .nav-link {
+  color: #666 !important;
+  background-color: #f5f5f5 !important;
+  border: 1px solid transparent !important;
+  margin-right: 5px !important;
+  transition: all 0.3s ease !important;
+  font-weight: 500 !important;
+}
+
+.nav-tabs .nav-link:hover:not(.active),
+.nav-pills .nav-link:hover:not(.active) {
+  background-color: #e0e0e0 !important;
+  border-color: transparent !important;
+}
+
+.nav-tabs .nav-link.active,
+.nav-pills .nav-link.active {
+  background-color: #338F7A !important;
+  color: white !important;
+  border-color: #338F7A !important;
+}
+
+/* Document Tabs */
+.document-tabs .nav-pills {
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+}
+
+.document-tabs .nav-link {
+  color: #666 !important;
+  background-color: #f5f5f5 !important;
+  border-radius: 20px !important;
+  padding: 8px 20px !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+  margin-bottom: 10px !important;
+  margin-right: 5px !important;
+}
+
+.document-tabs .nav-link.active {
+  background-color: #338F7A !important;
+  color: white !important;
+}
+
+.document-tabs .nav-link:hover:not(.active) {
+  background-color: #e0e0e0 !important;
+}
+
+/* District Activity Tabs */
+.district-activity-tabs .nav-tabs {
+  border-bottom: none !important;
+  background-color: #f5f5f5 !important;
+  border-radius: 5px 5px 0 0 !important;
+  padding: 10px 10px 0 !important;
+}
+
+.district-activity-tabs .nav-link {
+  color: #666 !important;
+  border: 1px solid transparent !important;
+  border-radius: 5px 5px 0 0 !important;
+  padding: 12px 15px !important;
+  transition: all 0.3s ease !important;
+  margin-right: 5px !important;
+  font-weight: 500 !important;
+}
+
+.district-activity-tabs .nav-link:hover {
+  background-color: rgba(51, 143, 122, 0.05) !important;
+  border-color: transparent !important;
+}
+
+.district-activity-tabs .nav-link.active {
+  background-color: #fff !important;
+  border-color: #dee2e6 #dee2e6 #fff !important;
+  color: #338F7A !important;
+}
+
+/* Resource Tabs */
+.resource-tabs .nav-link {
+  color: #666 !important;
+  background-color: #f5f5f5 !important;
+  border-radius: 25px !important;
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  margin-right: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+.resource-tabs .nav-link.active {
+  background-color: #338F7A !important;
+  color: white !important;
+}
+
+.resource-tabs .nav-link:hover:not(.active) {
+  background-color: #e0e0e0 !important;
+}
+
+/* Sub-tabs Styling */
+#document-category-tabs .nav-link,
+#infographic-category-tabs .nav-link,
+#map-category-tabs .nav-link,
+#form-category-tabs .nav-link {
+  color: #666 !important;
+  background-color: transparent !important;
+  font-size: 14px !important;
+  border-radius: 0 !important;
+  padding: 8px 15px !important;
+  transition: all 0.3s ease !important;
+}
+
+#document-category-tabs .nav-link.active,
+#infographic-category-tabs .nav-link.active,
+#map-category-tabs .nav-link.active,
+#form-category-tabs .nav-link.active {
+  color: #338F7A !important;
+  background-color: transparent !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid #338F7A !important;
+}
+
+#document-category-tabs .nav-link:hover:not(.active),
+#infographic-category-tabs .nav-link:hover:not(.active),
+#map-category-tabs .nav-link:hover:not(.active),
+#form-category-tabs .nav-link:hover:not(.active) {
+  background-color: rgba(51, 143, 122, 0.05) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .district-activity-tabs .nav-link {
+    padding: 8px 10px !important;
+    font-size: 14px !important;
+  }
+  
+  .resource-tabs .nav-link {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+  }
+}
