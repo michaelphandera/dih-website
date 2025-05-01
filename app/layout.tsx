@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import "@/styles/dc.css"
 import { Header } from "@/components/header"
+import  ThemeSwitcher  from "@/components/ThemeSwitcher"
 import Footer from "@/components/footer"
 import Script from "next/script"
 import Scripts from "./script"
@@ -63,6 +64,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <ThemeSwitcher />
         <Header />
         <main className="min-vh-100">
           {children}

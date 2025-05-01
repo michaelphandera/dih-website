@@ -1,5 +1,9 @@
 
-export function DistrictActivityTabs() {
+type DistrictActivityTabsProps = {
+    districtId: string;
+};
+
+export function DistrictActivityTabs({ districtId }: DistrictActivityTabsProps) {
     return (
         <div className="district-activity-tabs">
             <ul className="nav nav-tabs" id="districtTabs" role="tablist">
@@ -158,7 +162,7 @@ export function DistrictActivityTabs() {
                         </div>
                     </div>
                 </div>
-                <div className="tab-pane fade show active" id="response" role="tabpanel">
+                <div className="tab-pane fade" id="response" role="tabpanel">
                     <div className="row mb-4">
                         <div className="col-md-8">
                             <h4 className="mb-4">Response Building</h4>
@@ -285,7 +289,7 @@ export function DistrictActivityTabs() {
                         </div>
                     </div>
                 </div>
-                <div className="tab-pane fade show active" id="recovery" role="tabpanel">
+                <div className="tab-pane fade" id="recovery" role="tabpanel">
                     <div className="row mb-4">
                         <div className="col-md-8">
                             <h4 className="mb-4">Recovery Building</h4>

@@ -38,174 +38,82 @@ a:active,
 a:visited {
   text-decoration: none !important;
 }
-
-
-/* Extended Dropdown Menu for Districts */
-.district-dropdown {
-  min-width: 500px !important;
-  width: auto !important;
-  padding: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  border: none;
+/* SVG Chart Styles */
+.chart-container svg {
+  overflow: visible;
 }
 
-.district-dropdown .nav-item {
-  list-style: none;
+.radarArea {
+  pointer-events: all;
 }
 
-.district-dropdown .nav-link {
-  padding: 8px 15px;
-  transition: all 0.3s ease;
-  color: #666;
+.radarArea:hover {
+  fill-opacity: 0.7;
+}
+
+.radarCircle:hover {
+  fill-opacity: 0.7;
+}
+
+/* Pulsating effect for active alerts */
+@keyframes pulse {
+  0% {
+      r: 10;
+      opacity: 0.8;
+  }
+  100% {
+      r: 20;
+      opacity: 0;
+  }
+}
+
+.pulse-circle {
+  animation: pulse 1.5s infinite;
+}
+
+/* Map styles */
+.district:hover {
+  fill-opacity: 0.8;
+  cursor: pointer;
+}
+
+.city:hover, .evacuation:hover {
+  r: 8;
+  cursor: pointer;
+}
+
+.city-label {
+  pointer-events: none;
+}
+
+/* Bar chart styles */
+.bar:hover {
+  fill-opacity: 0.8;
+  cursor: pointer;
+}
+
+/* Tooltip styles */
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 8px;
+  font: 12px sans-serif;
+  background: white;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  margin: 2px 0;
+  pointer-events: none;
+  z-index: 100;
 }
 
-.district-dropdown .nav-link:hover {
-  background-color: rgba(51, 143, 122, 0.1);
-  color: #338F7A;
-  transform: translateX(3px);
-}
-
-.district-dropdown .dropdown-divider {
-  margin: 10px 0;
-  border-top: 1px solid rgba(51, 143, 122, 0.2);
-}
-
-.district-dropdown .view-all {
-  color: #338F7A;
-  font-weight: 600;
-}
-
-.district-dropdown .view-all:hover {
-  background-color: #338F7A;
-  color: white;
-}
-
-/* Responsive adjustments */
-@media (max-width: 767px) {
-  .district-dropdown {
-    min-width: 300px !important;
-    width: 95% !important;
-    margin: 0 auto;
-    left: 0;
-    transform: none;
-  }
-
-  .district-dropdown .row>div {
-    margin-bottom: 10px;
-  }
-}
-
-/* Extended Dropdown Menu for Ministries */
-.ministry-dropdown {
-  min-width: 800px !important;
-  width: auto !important;
-  padding: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  border: none;
-}
-
-.ministry-dropdown .nav-item {
-  list-style: none;
-}
-
-.ministry-dropdown .nav-link {
-  padding: 8px 10px;
-  transition: all 0.3s ease;
-  color: #666;
-  border-radius: 5px;
-  margin: 3px 0;
-  white-space: normal;
-  font-size: 14px;
-}
-
-.ministry-dropdown .nav-link:hover {
-  background-color: rgba(51, 143, 122, 0.1);
-  color: #338F7A;
-  transform: translateX(3px);
-}
-
-.ministry-dropdown .dropdown-divider {
-  margin: 10px 0;
-  border-top: 1px solid rgba(51, 143, 122, 0.2);
-}
-
-.ministry-dropdown .view-all {
-  color: #338F7A;
-  font-weight: 600;
-}
-
-.ministry-dropdown .view-all:hover {
-  background-color: #338F7A;
-  color: white;
-}
-
-/* Responsive adjustments */
-@media (max-width: 991px) {
-  .ministry-dropdown {
-    min-width: 600px !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .ministry-dropdown {
-    min-width: 300px !important;
-    width: 95% !important;
-    margin: 0 auto;
-    left: 0;
-    transform: none;
-  }
-
-  .ministry-dropdown .row>div {
-    margin-bottom: 10px;
-  }
-
-  .ministry-dropdown .nav-link {
-    font-size: 15px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .header-bottom .container {
-    max-width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-.document-tabs .nav-link {
-  color: #666;
-  background-color: #f5f5f5;
-  border-radius: 20px;
-  padding: 8px 20px;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.document-tabs .nav-link.active {
-  background-color: #338F7A;
-  color: white;
-}
-
-.document-tabs .nav-link:hover:not(.active) {
-  background-color: #e0e0e0;
-}
-
+/* Document Cards */
 .document-card {
   transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .document-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
 }
 
 .document-preview {
@@ -233,41 +141,10 @@ a:visited {
   letter-spacing: 0.5px;
 }
 
-.table td,
-.table th {
+.table td, .table th {
   padding: 12px 15px;
   vertical-align: middle;
 }
-
-/* Add file type icons if needed */
-@media (max-width: 767px) {
-  .document-preview {
-    min-height: 150px;
-  }
-
-  .document-info {
-    padding: 15px !important;
-  }
-
-  .document-actions {
-    flex-direction: column;
-    align-items: flex-start !important;
-  }
-
-  .document-actions a {
-    margin-bottom: 10px;
-    width: 100%;
-  }
-
-  .btn-like {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-}
-
-
-
 
 /* Extended Dropdown Menu for Districts */
 .district-dropdown {
@@ -277,7 +154,7 @@ a:visited {
   left: 50%;
   transform: translateX(-50%);
   border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   border: none;
 }
 
@@ -314,22 +191,6 @@ a:visited {
   color: white;
 }
 
-/* Responsive adjustments */
-@media (max-width: 767px) {
-  .district-dropdown {
-    min-width: 300px !important;
-    width: 95% !important;
-    margin: 0 auto;
-    left: 0;
-    transform: none;
-  }
-
-  .district-dropdown .row>div {
-    margin-bottom: 10px;
-  }
-}
-
-
 /* Extended Dropdown Menu for Ministries */
 .ministry-dropdown {
   min-width: 800px !important;
@@ -338,7 +199,7 @@ a:visited {
   left: 50%;
   transform: translateX(-50%);
   border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   border: none;
 }
 
@@ -377,40 +238,68 @@ a:visited {
   color: white;
 }
 
-/* Responsive adjustments */
-@media (max-width: 991px) {
-  .ministry-dropdown {
-    min-width: 600px !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .ministry-dropdown {
-    min-width: 300px !important;
-    width: 95% !important;
-    margin: 0 auto;
-    left: 0;
-    transform: none;
-  }
-
-  .ministry-dropdown .row>div {
-    margin-bottom: 10px;
-  }
-
-  .ministry-dropdown .nav-link {
-    font-size: 15px;
-  }
-}
-
+/* Header Overrides */
 @media (min-width: 1400px) {
   .header-bottom .container {
-    max-width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
+      max-width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
   }
 }
 
-/* District Information View Styles */
+/* Force navbar display fix */
+@media (min-width: 992px) {
+ .navbar-expand-md .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+ }
+ 
+ .navbar-expand-md .navbar-nav {
+    flex-direction: row;
+    margin-right: auto;
+ }
+ 
+ .collapse:not(.show) {
+    display: flex;
+ }
+ 
+ .navbar-nav {
+    display: flex !important;
+ }
+}
+
+/* Emergency button visibility fix */
+.nav-item.d-lg-none {
+ display: none !important;
+}
+
+@media (max-width: 991px) {
+ .nav-item.d-lg-none {
+    display: block !important;
+ }
+}
+
+/* Fix logo and searchbox positioning */
+.header-bottom .container {
+ position: relative;
+}
+
+.navbar-brand {
+ margin-right: 2rem;
+}
+
+.other-options.md-none {
+ display: flex !important;
+ align-items: center;
+}
+
+@media (max-width: 991px) {
+ .other-options.md-none {
+    display: none !important;
+ }
+}
+
+/* District View Styles */
 
 /* Timeline Styles */
 .timeline-container {
@@ -531,6 +420,7 @@ a:visited {
   font-size: 14px;
   transition: all 0.3s ease;
   margin-bottom: 10px;
+  margin-right: 5px;
 }
 
 .document-tabs .nav-link.active {
@@ -540,6 +430,7 @@ a:visited {
 
 .document-tabs .nav-link:hover:not(.active) {
   background-color: #e0e0e0;
+  transform: translateY(-2px);
 }
 
 /* Emergency Contact Cards */
@@ -549,7 +440,7 @@ a:visited {
 
 .emergency-contact-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* District Data Controls */
@@ -558,7 +449,7 @@ a:visited {
 }
 
 .district-data-controls:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 /* Risk Gauge Chart Placeholder */
@@ -589,197 +480,244 @@ a:visited {
   top: 90px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 991px) {
-  .timeline-container {
-    padding-left: 25px;
-  }
-
-  .timeline-item:before {
-    left: -25px;
-  }
+/* Left Sidebar Filter Styles */
+.district-filter-sidebar {
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 767px) {
-  .timeline-container {
-    padding-left: 20px;
-  }
-
-  .timeline-item:before {
-    left: -20px;
-    width: 12px;
-    height: 12px;
-  }
-
-  .district-activity-tabs .nav-link {
-    padding: 8px 10px;
-    font-size: 14px;
-  }
-
-  .readiness-indicator {
-    width: 80px;
-    height: 80px;
-  }
-
-  .readiness-indicator svg text {
-    font-size: 18px;
-  }
+.district-filter-sidebar:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* Resource Tabs Styling */
-.resource-tabs .nav-link {
-  color: #666;
-  background-color: #f5f5f5;
-  border-radius: 25px;
-  padding: 10px 20px;
-  font-size: 16px;
+.filter-section {
+  border-bottom: 1px solid rgba(51, 143, 122, 0.1);
+  padding-bottom: 15px;
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-header {
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-header:hover {
+  color: #338F7A;
+}
+
+.filter-header i {
+  transition: transform 0.3s ease;
+}
+
+.filter-header i.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.filter-body {
+  padding-left: 10px;
+}
+
+.form-check-input:checked {
+  background-color: #338F7A;
+  border-color: #338F7A;
+}
+
+.form-check-input:disabled {
+  opacity: 0.5;
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(51, 143, 122, 0.25);
+  border-color: #338F7A;
+}
+
+.btn-link {
+  color: #338F7A;
+  padding: 0;
+  font-size: 14px;
+}
+
+.btn-link:hover {
+  color: #F59946;
+  text-decoration: none;
+}
+
+/* Infographics & Maps Styles */
+.infographic-card,
+.map-card {
   transition: all 0.3s ease;
   border: none;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.resource-tabs .nav-link.active {
-  background-color: #338F7A;
-  color: white;
-}
-
-.resource-tabs .nav-link:hover:not(.active) {
-  background-color: #e0e0e0;
-}
-
-/* Document Cards & Other Resource Cards */
-.document-card,
-.infographic-card,
-.map-card,
-.form-card {
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.document-card:hover,
 .infographic-card:hover,
-.map-card:hover,
-.form-card:hover {
+.map-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.document-preview,
-.form-preview {
-  min-height: 220px;
+.infographic-card .card-img-top,
+.map-card .card-img-top {
+  transition: all 0.5s ease;
 }
 
-.document-icon,
-.form-icon {
-  transition: all 0.3s ease;
+.infographic-card:hover .card-img-top,
+.map-card:hover .card-img-top {
+  transform: scale(1.03);
 }
 
-.document-card:hover .document-icon,
-.form-card:hover .form-icon {
-  transform: scale(1.1);
+.infographic-card .badge,
+.map-card .badge {
+  font-weight: 500;
+  padding: 5px 10px;
 }
 
-.btn-like {
-  transition: all 0.3s ease;
+/* Map Specific Styles */
+#map {
+  width: 100%;
+  height: 300px;
+  z-index: 1;
+  position: relative;
 }
 
-.btn-like:hover {
-  transform: scale(1.2);
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
 }
 
-.document-badge,
-.infographic-badge,
-.map-badge,
-.form-badge {
-  font-weight: 600;
-  letter-spacing: 0.5px;
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
 }
 
-/* Sub-tabs Styling */
-#document-category-tabs .nav-link,
-#infographic-category-tabs .nav-link,
-#map-category-tabs .nav-link,
-#form-category-tabs .nav-link {
-  color: #666;
-  background-color: transparent;
-  font-size: 14px;
-  border-radius: 0;
-  padding: 8px 15px;
-  transition: all 0.3s ease;
+.legend {
+  line-height: 18px;
+  color: #555;
 }
 
-#document-category-tabs .nav-link.active,
-#infographic-category-tabs .nav-link.active,
-#map-category-tabs .nav-link.active,
-#form-category-tabs .nav-link.active {
-  color: #338F7A;
-  background-color: transparent;
-  font-weight: 600;
-  border-bottom: 2px solid #338F7A;
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
 }
 
-#document-category-tabs .nav-link:hover:not(.active),
-#infographic-category-tabs .nav-link:hover:not(.active),
-#map-category-tabs .nav-link:hover:not(.active),
-#form-category-tabs .nav-link:hover:not(.active) {
-  background-color: rgba(51, 143, 122, 0.05);
+.district-label {
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  font-weight: bold;
+  padding: 2px 5px;
+  font-size: 10px;
+  pointer-events: none;
 }
 
-/* Responsive adjustments */
+#error-message {
+  color: red;
+  background: #ffeeee;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  display: none;
+  font-size: 0.8rem;
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+  .ministry-dropdown {
+      min-width: 600px !important;
+  }
+  
+  .district-filter-sidebar {
+      position: relative !important;
+      top: 0 !important;
+      margin-bottom: 20px;
+  }
+  
+  .timeline-container {
+      padding-left: 25px;
+  }
+  
+  .timeline-item:before {
+      left: -25px;
+  }
+}
+
 @media (max-width: 767px) {
-
-  .document-preview,
-  .form-preview {
-    min-height: 150px;
+  .document-preview {
+      min-height: 150px;
   }
-
-  .document-info,
-  .infographic-info,
-  .map-info,
-  .form-info {
-    padding: 15px !important;
+  
+  .document-info {
+      padding: 15px !important;
   }
-
-  .document-actions,
-  .infographic-actions,
-  .form-actions {
-    flex-direction: column;
-    align-items: flex-start !important;
+  
+  .document-actions {
+      flex-direction: column;
+      align-items: flex-start !important;
   }
-
-  .document-actions a,
-  .infographic-actions a,
-  .form-actions a {
-    margin-bottom: 10px;
-    width: 100%;
+  
+  .document-actions a {
+      margin-bottom: 10px;
+      width: 100%;
   }
-
+  
   .btn-like {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
   }
-
-  .resource-tabs .nav-link {
-    font-size: 14px;
-    padding: 8px 12px;
+  
+  .district-dropdown,
+  .ministry-dropdown {
+      min-width: 300px !important;
+      width: 95% !important;
+      margin: 0 auto;
+      left: 0;
+      transform: none;
   }
-}
-
-
-.document-tabs .nav-link {
-  color: #666;
-  background-color: #f5f5f5;
-  border-radius: 20px;
-  padding: 8px 20px;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.document-tabs .nav-link.active {
-  background-color: #338F7A;
-  color: white;
-}
-
-.document-tabs .nav-link:hover:not(.active) {
-  background-color: #e0e0e0;
+  
+  .district-dropdown .row > div,
+  .ministry-dropdown .row > div {
+      margin-bottom: 10px;
+  }
+  
+  .ministry-dropdown .nav-link {
+      font-size: 15px;
+  }
+  
+  .timeline-container {
+      padding-left: 20px;
+  }
+  
+  .timeline-item:before {
+      left: -20px;
+      width: 12px;
+      height: 12px;
+  }
+  
+  .district-activity-tabs .nav-link {
+      padding: 8px 10px;
+      font-size: 14px;
+  }
+  
+  .readiness-indicator {
+      width: 80px;
+      height: 80px;
+  }
+  
+  .readiness-indicator svg text {
+      font-size: 18px;
+  }
 }

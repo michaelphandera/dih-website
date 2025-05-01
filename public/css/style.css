@@ -657,6 +657,7 @@ select {
 .btn.style1 {
   background-color: #338F7A;
   border-radius: 15px 0 15px 0;
+  color: #fff;
 }
 .btn.style1:after, .btn.style1:before {
   background: #000;
