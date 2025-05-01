@@ -13,6 +13,11 @@ export function DistrictActivityTabs({ districtId }: DistrictActivityTabsProps) 
                     </button>
                 </li>
                 <li className="nav-item" role="presentation">
+                    <button className="nav-link" id="preparedness-tab" data-bs-toggle="tab" data-bs-target="#preparedness" type="button" role="tab">
+                        <i className="ri-alarm-warning-line me-1" /> Preparedness
+                    </button>
+                </li>
+                <li className="nav-item" role="presentation">
                     <button className="nav-link" id="response-tab" data-bs-toggle="tab" data-bs-target="#response" type="button" role="tab">
                         <i className="ri-first-aid-kit-line me-1" /> Response
                     </button>
@@ -153,6 +158,124 @@ export function DistrictActivityTabs({ districtId }: DistrictActivityTabsProps) 
                                             Ministry</span>
                                         <a href="#" className="ms-2"><i className="ri-image-line" /> View
                                             Gallery</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="text-center mt-4">
+                            <a href="#" className="btn style2">Load More</a>
+                        </div>
+                    </div>
+                </div>
+                {/* Preparedness Tab */}
+                <div className="tab-pane fade" id="preparedness" role="tabpanel">
+                    <div className="row mb-4">
+                        <div className="col-md-8">
+                            <h4 className="mb-4">Disaster Preparedness</h4>
+                        </div>
+                    </div>
+
+                    <div className="row g-4 mb-4">
+                        <div className="col-lg-6">
+                            <div className="card h-100 border-0 shadow-sm">
+                                <div className="card-header d-flex justify-content-between align-items-center" style={{ backgroundColor: 'rgba(110, 180, 240, 0.1)' }}>
+                                    <h5 className="mb-0">Early Warning System Implementation</h5>
+                                    <span className="badge" style={{ backgroundColor: '#6EB4F0' }}>Technology Ministry</span>
+                                </div>
+                                <div className="card-body">
+                                    <div className="d-flex align-items-center mb-3">
+                                        <div className="progress flex-grow-1 me-3" style={{ height: 8 }}>
+                                            <div className="progress-bar bg-info" role="progressbar" style={{ width: '65%' }} />
+                                        </div>
+                                        <span>65% Complete</span>
+                                    </div>
+                                    <p>Installation of advanced early warning systems across the district to provide timely alerts for cyclones, floods, and other natural disasters.</p>
+                                    <div className="d-flex mt-3">
+                                        <div className="me-4">
+                                            <small className="text-muted d-block">Start Date</small>
+                                            <span>Mar 5, 2025</span>
+                                        </div>
+                                        <div>
+                                            <small className="text-muted d-block">End Date</small>
+                                            <span>Aug 15, 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="card-footer bg-transparent">
+                                    <a href="#" className="btn btn-sm style1">View Details</a>
+                                    <a href="#" className="btn btn-sm btn-outline-secondary ms-2">Related Documents</a>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Activity 2 */}
+                        <div className="col-lg-6">
+                            <div className="card h-100 border-0 shadow-sm">
+                                <div className="card-header d-flex justify-content-between align-items-center" style={{ backgroundColor: 'rgba(245, 153, 70, 0.1)' }}>
+                                    <h5 className="mb-0">Emergency Evacuation Drills</h5>
+                                    <span className="badge" style={{ backgroundColor: '#F59946' }}>Civil Defense</span>
+                                </div>
+                                <div className="card-body">
+                                    <div className="d-flex align-items-center mb-3">
+                                        <div className="progress flex-grow-1 me-3" style={{ height: 8 }}>
+                                            <div className="progress-bar bg-warning" role="progressbar" style={{ width: '80%' }} />
+                                        </div>
+                                        <span>80% Complete</span>
+                                    </div>
+                                    <p>Regular evacuation drills and emergency response training for communities in high-risk areas to ensure readiness during actual disasters.</p>
+                                    <div className="d-flex mt-3">
+                                        <div className="me-4">
+                                            <small className="text-muted d-block">Start Date</small>
+                                            <span>Feb 20, 2025</span>
+                                        </div>
+                                        <div>
+                                            <small className="text-muted d-block">End Date</small>
+                                            <span>Ongoing</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="card-footer bg-transparent">
+                                    <a href="#" className="btn btn-sm style1">View Details</a>
+                                    <a href="#" className="btn btn-sm btn-outline-secondary ms-2">Related Documents</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Activity Timeline */}
+                    <div className="district-activity-timeline mt-5">
+                        <h4 className="mb-4">Preparedness Timeline</h4>
+                        <div className="timeline-container position-relative">
+                            <div className="timeline-line" />
+                            {/* Timeline items */}
+                            <div className="timeline-item">
+                                <div className="timeline-date">May 5, 2025</div>
+                                <div className="timeline-content">
+                                    <h5>District-wide Emergency Response Plan Updated</h5>
+                                    <p>Comprehensive update to the district emergency response plan incorporating lessons from recent simulation exercises.</p>
+                                    <div className="timeline-meta">
+                                        <span className="badge" style={{ backgroundColor: '#6EB4F0' }}>Civil Defense</span>
+                                        <a href="#" className="ms-2"><i className="ri-file-text-line" /> View Plan</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="timeline-item">
+                                <div className="timeline-date">Apr 12, 2025</div>
+                                <div className="timeline-content">
+                                    <h5>Emergency Shelter Capacity Expanded</h5>
+                                    <p>Completion of renovations to increase capacity of emergency shelters by 35% across the district.</p>
+                                    <div className="timeline-meta">
+                                        <span className="badge" style={{ backgroundColor: '#338F7A' }}>Infrastructure Ministry</span>
+                                        <a href="#" className="ms-2"><i className="ri-image-line" /> View Gallery</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="timeline-item">
+                                <div className="timeline-date">Mar 28, 2025</div>
+                                <div className="timeline-content">
+                                    <h5>Community Preparedness Workshop Series Launched</h5>
+                                    <p>Initiation of monthly workshops to educate communities on disaster preparedness and household emergency planning.</p>
+                                    <div className="timeline-meta">
+                                        <span className="badge" style={{ backgroundColor: '#F59946' }}>Education Ministry</span>
+                                        <a href="#" className="ms-2"><i className="ri-calendar-line" /> View Schedule</a>
                                     </div>
                                 </div>
                             </div>

@@ -48,7 +48,7 @@ export default function ResourcesPage() {
                       <h3 className="h5 mb-0">{resource.title}</h3>
                     </div>
                     <p>{resource.description}</p>
-                    <Link href={resource.url} className="btn style2 mt-3">
+                    <Link href={`/resources/${resource.type.toLowerCase().replace(' ', '-')}`} className="btn style2 mt-3">
                       View Resources
                     </Link>
                   </div>
@@ -111,7 +111,7 @@ export default function ResourcesPage() {
       <section className="py-5 bg-light">
         <div className="container">
           <h2 className="text-center mb-5">Featured Documents</h2>
-          
+
           <div className="row g-4">
             {featuredDocuments.map((document) => (
               <div key={document.id} className="col-md-6 col-lg-3">
@@ -143,7 +143,7 @@ export default function ResourcesPage() {
       <section className="py-5">
         <div className="container">
           <h2 className="text-center mb-5">Recent Documents</h2>
-          
+
           <div className="table-responsive">
             <table className="table table-hover">
               <thead className="table-light">
@@ -192,15 +192,15 @@ export default function ResourcesPage() {
       <section className="py-5 bg-light">
         <div className="container">
           <h2 className="text-center mb-5">Infographics</h2>
-          
+
           <div className="row g-4">
             <div className="col-md-6 col-lg-4">
               <div className="card h-100 border-0 shadow-sm">
                 <div className="card-body p-0">
                   <div className="position-relative" style={{ height: '200px' }}>
-                    <Image 
-                      src="/placeholder.svg" 
-                      alt="Flood Safety Infographic" 
+                    <Image
+                      src="/placeholder.svg"
+                      alt="Flood Safety Infographic"
                       fill
                       className="img-fluid"
                       style={{ objectFit: 'cover' }}
@@ -220,9 +220,9 @@ export default function ResourcesPage() {
               <div className="card h-100 border-0 shadow-sm">
                 <div className="card-body p-0">
                   <div className="position-relative" style={{ height: '200px' }}>
-                    <Image 
-                      src="/placeholder.svg" 
-                      alt="Earthquake Response Infographic" 
+                    <Image
+                      src="/placeholder.svg"
+                      alt="Earthquake Response Infographic"
                       fill
                       className="img-fluid"
                       style={{ objectFit: 'cover' }}
@@ -242,9 +242,9 @@ export default function ResourcesPage() {
               <div className="card h-100 border-0 shadow-sm">
                 <div className="card-body p-0">
                   <div className="position-relative" style={{ height: '200px' }}>
-                    <Image 
-                      src="/placeholder.svg" 
-                      alt="Emergency Kit Infographic" 
+                    <Image
+                      src="/placeholder.svg"
+                      alt="Emergency Kit Infographic"
                       fill
                       className="img-fluid"
                       style={{ objectFit: 'cover' }}

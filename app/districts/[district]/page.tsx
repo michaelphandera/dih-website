@@ -477,78 +477,8 @@ const resetFilters = () => {
 
       <section className="ptb-100 bg-sand">
         <div className="container">
-          {/* District Overview */}
-          <div className="row mb-5">
-            <div className="col-lg-8">
-              <div className="section-title style3 mb-30">
-                <div className="row align-items-center">
-                  <div className="col-lg-7 col-md-6">
-                    <span>District Profile</span>
-                  </div>
-                  <div className="col-lg-5 col-md-6">
-                    <div className="ministry-dropdown-wrapper text-md-end mb-30">
-                      <select
-                        id="district-dropdown"
-                        className="form-select dropdown-select"
-                        value={selectedDistrict}
-                        onChange={handleDistrictChange}
-                      >
-                        <option value="" disabled>Change a District</option>
-                        <option value="port-louis">Port Louis</option>
-                        <option value="pamplemousses">Pamplemousses</option>
-                        <option value="flacq">Flacq</option>
-                        <option value="black-river">Black River</option>
-                        <option value="grand-port">Grand Port</option>
-                        <option value="moka">Moka</option>
-                        <option value="plaines-wilhems">Plaines Wilhems</option>
-                        <option value="riviere-du-rempart">Rivière du Rempart</option>
-                        <option value="savanne">Savanne</option>
-                        <option value="rodrigues">Rodrigues</option>
-                        <option value="agalega">Agalega</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <h2>{currentDistrictData.name} Overview</h2>
-              </div>
-              <div className="about-content">
-                <p>{currentDistrictData.description}</p>
-                <div className="row mt-4">
-                  <div className="col-md-6">
-                    <ul className="content-feature-list list-style">
-                      <li><i className="ri-checkbox-circle-line"></i>Population: {currentDistrictData.population}</li>
-                      <li><i className="ri-checkbox-circle-line"></i>Area: {currentDistrictData.area}</li>
-                      <li><i className="ri-checkbox-circle-line"></i>Elevation: {currentDistrictData.elevation}</li>
-                    </ul>
-                  </div>
-                  <div className="col-md-6">
-                    <ul className="content-feature-list list-style">
-                      <li><i className="ri-checkbox-circle-line"></i>Evacuation Centers: {currentDistrictData.evacuationCenters}</li>
-                      <li><i className="ri-checkbox-circle-line"></i>Emergency Response Teams: {currentDistrictData.emergencyTeams}</li>
-                      <li><i className="ri-checkbox-circle-line"></i>District Risk Level: {currentDistrictData.riskLevel}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <div className="card h-100 bg-white p-3 shadow-sm">
-                <h5 className="card-title p-2 border-bottom">{currentDistrictData.name}</h5>
-                <div className="district-map">
-                  <LeafletMap
-                    districts={districtData}
-                    selectedDistrict={selectedDistrict}
-                    onDistrictSelect={(district: string) => setSelectedDistrict(district as DistrictKey)}
-                    center={mapCenter}
-                    zoom={mapZoom}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* New Layout: Filter on Left, Content on Right */}
-          <div className="row">
+            {/* New Layout: Filter on Left, Content on Right */}
+            <div className="row">
             {/* Left Side: Filters */}
             <div className="col-lg-3 col-md-4">
               <div className="district-filter-sidebar p-3 rounded shadow-sm" style={{ top: '90px', backgroundColor: 'white' }}>
@@ -717,66 +647,7 @@ const resetFilters = () => {
                 </div>
 
                 {/* Categories Filter */}
-                <div className="filter-section mb-3">
-                  <div className="filter-header" data-bs-toggle="collapse" data-bs-target="#categoryFilters" aria-expanded="false">
-                    <h6 className="d-flex justify-content-between align-items-center mb-0">
-                      Categories
-                      <i className="ri-arrow-down-s-line"></i>
-                    </h6>
-                  </div>
-                  <div id="categoryFilters" className="collapse">
-                    <div className="filter-body pt-2">
-                      <div className="form-check mb-2">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          id="cat-all"
-                          checked={categoryFilter.includes('all')}
-                          onChange={() => handleCategoryFilterChange('all')}
-                        />
-                        <label className="form-check-label" htmlFor="cat-all">
-                          All Categories
-                        </label>
-                      </div>
-                      <div className="form-check mb-2">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          id="cat-events"
-                          checked={categoryFilter.includes('events')}
-                          onChange={() => handleCategoryFilterChange('events')}
-                        />
-                        <label className="form-check-label" htmlFor="cat-events">
-                          Disaster Events
-                        </label>
-                      </div>
-                      <div className="form-check mb-2">
-                      <input
-                          type="checkbox"
-                          className="form-check-input"
-                          id="cat-projects"
-                          checked={categoryFilter.includes('projects')}
-                          onChange={() => handleCategoryFilterChange('projects')}
-                        />
-                        <label className="form-check-label" htmlFor="cat-projects">
-                          Projects
-                        </label>
-                      </div>
-                      <div className="form-check mb-2">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          id="cat-resources"
-                          checked={categoryFilter.includes('resources')}
-                          onChange={() => handleCategoryFilterChange('resources')}
-                        />
-                        <label className="form-check-label" htmlFor="cat-resources">
-                          Resources
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
 
                 <button id="apply-filters" className="btn style1 w-100" onClick={applyFilters}>
                   Apply Filters
@@ -786,9 +657,81 @@ const resetFilters = () => {
                 </button>
               </div>
             </div>
+         
+
+        
 
             {/* Right Side: Content */}
             <div className="col-lg-9 col-md-8">
+               {/* District Overview */}
+          <div className="row mb-5">
+            <div className="col-lg-8">
+              <div className="section-title style3 mb-30">
+                <div className="row align-items-center">
+                  <div className="col-lg-7 col-md-6">
+                    <span>District Profile</span>
+                  </div>
+                  <div className="col-lg-5 col-md-6">
+                    <div className="ministry-dropdown-wrapper text-md-end mb-30">
+                      <select
+                        id="district-dropdown"
+                        className="form-select dropdown-select"
+                        value={selectedDistrict}
+                        onChange={handleDistrictChange}
+                      >
+                        <option value="" disabled>Change a District</option>
+                        <option value="port-louis">Port Louis</option>
+                        <option value="pamplemousses">Pamplemousses</option>
+                        <option value="flacq">Flacq</option>
+                        <option value="black-river">Black River</option>
+                        <option value="grand-port">Grand Port</option>
+                        <option value="moka">Moka</option>
+                        <option value="plaines-wilhems">Plaines Wilhems</option>
+                        <option value="riviere-du-rempart">Rivière du Rempart</option>
+                        <option value="savanne">Savanne</option>
+                        <option value="rodrigues">Rodrigues</option>
+                        <option value="agalega">Agalega</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <h2>{currentDistrictData.name} Overview</h2>
+              </div>
+              <div className="about-content">
+                <p>{currentDistrictData.description}</p>
+                <div className="row mt-4">
+                  <div className="col-md-6">
+                    <ul className="content-feature-list list-style">
+                      <li><i className="ri-checkbox-circle-line"></i>Population: {currentDistrictData.population}</li>
+                      <li><i className="ri-checkbox-circle-line"></i>Area: {currentDistrictData.area}</li>
+                      <li><i className="ri-checkbox-circle-line"></i>Elevation: {currentDistrictData.elevation}</li>
+                    </ul>
+                  </div>
+                  <div className="col-md-6">
+                    <ul className="content-feature-list list-style">
+                      <li><i className="ri-checkbox-circle-line"></i>Evacuation Centers: {currentDistrictData.evacuationCenters}</li>
+                      <li><i className="ri-checkbox-circle-line"></i>Emergency Response Teams: {currentDistrictData.emergencyTeams}</li>
+                      <li><i className="ri-checkbox-circle-line"></i>District Risk Level: {currentDistrictData.riskLevel}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4">
+              <div className="card h-100 bg-white p-3 shadow-sm">
+                <h5 className="card-title p-2 border-bottom">{currentDistrictData.name}</h5>
+                <div className="district-map">
+                  <LeafletMap
+                    districts={districtData}
+                    selectedDistrict={selectedDistrict}
+                    onDistrictSelect={(district: string) => setSelectedDistrict(district as DistrictKey)}
+                    center={mapCenter}
+                    zoom={mapZoom}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
               {/* District Risk Analysis Card */}
               <div className="card mb-4 bg-white p-4 shadow-sm">
                 <h5 className="card-title border-bottom pb-2 mb-4">Risk Analysis</h5>
