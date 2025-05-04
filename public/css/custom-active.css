@@ -1,0 +1,22 @@
+/* Custom CSS for active menu items */
+.nav-link.active,
+.navbar-nav .nav-item a.active,
+.main-menu li a.active {
+  color: #338F7A !important;
+  font-weight: 600 !important;
+}
+
+/* For dropdown items */
+.dropdown-menu .nav-item a.active {
+  color: #338F7A !important;
+  font-weight: 600 !important;
+}
+
+/* For mobile menu */
+@media only screen and (max-width: 991px) {
+  .main-menu li a.active {
+    color: #338F7A !important;
+    font-weight: 600 !important;
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+}

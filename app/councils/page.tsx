@@ -13,7 +13,7 @@ export default function CouncilsPage() {
   const allCouncils = councilsData.flat();
 
   return (
-    <div className="content pt-5">
+    <div className="content">
       <section className="breadcrumb-wrap">
         <div className="overlay op-6" />
         <div className="container">

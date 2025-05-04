@@ -2695,7 +2695,6 @@ select {
 .hero-wrap {
   position: relative;
   z-index: 1;
-  margin-top: 13px;
 }
 .hero-wrap .hero-content span {
   color: #338F7A;

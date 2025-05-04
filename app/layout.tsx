@@ -3,10 +3,11 @@ import type { Metadata } from "next"
 import "./globals.css"
 import "@/styles/dc.css"
 import { Header } from "@/components/header"
-import  ThemeSwitcher  from "@/components/ThemeSwitcher"
+import ThemeSwitcher from "@/components/ThemeSwitcher"
 import Footer from "@/components/footer"
 import Script from "next/script"
 import Scripts from "./script"
+import { LoadingProvider } from "@/contexts/LoadingContext"
 
 export const metadata: Metadata = {
   title: "NDRRMC Digital",
@@ -30,6 +31,21 @@ export default function RootLayout({
             }
           `}
         </style>
+
+        {/* Inline script to hide loaders immediately */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          // Hide loaders as early as possible
+          (function() {
+            function hideLoaders() {
+              var loaders = document.getElementsByClassName('page-loader-overlay');
+              for (var i = 0; i < loaders.length; i++) {
+                if (loaders[i]) loaders[i].style.display = 'none';
+              }
+            }
+            hideLoaders();
+            document.addEventListener('DOMContentLoaded', hideLoaders);
+          })();
+        `}} />
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -62,15 +78,25 @@ export default function RootLayout({
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossOrigin=""
         />
+        <link
+          rel="stylesheet"
+          href="/css/custom-active.css"
+        />
+        <link
+          rel="stylesheet"
+          href="/css/loader.css"
+        />
       </head>
       <body>
-        <ThemeSwitcher />
-        <Header />
-        <main className="min-vh-100">
-          {children}
-        </main>
-        <Footer />
-        <Scripts />
+        <LoadingProvider>
+          <ThemeSwitcher />
+          <Header />
+          <main className="min-vh-100">
+            {children}
+          </main>
+          <Footer />
+          <Scripts />
+        </LoadingProvider>
 
         {/* Bootstrap JS */}
         <Script
@@ -131,6 +157,22 @@ export default function RootLayout({
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
           crossOrigin=""
         />
+
+        {/* Custom Loader Script */}
+        <Script src="/js/loader.js" />
+
+        {/* Immediate script to hide loaders */}
+        <Script id="hide-loaders" strategy="afterInteractive">
+          {`
+            // Hide all loaders
+            var loaders = document.querySelectorAll('.page-loader-overlay, .spinner-border, .section-loader');
+            for (var i = 0; i < loaders.length; i++) {
+              if (loaders[i] && loaders[i].style) {
+                loaders[i].style.display = 'none';
+              }
+            }
+          `}
+        </Script>
       </body>
     </html>
   )

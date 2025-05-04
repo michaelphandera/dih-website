@@ -231,7 +231,7 @@ const ResourceDetails: React.FC = () => {
   });
 
   return (
-    <div className="content pt-5">
+    <div className="content">
       {/* Resource Header Section */}
       <section className="breadcrumb-wrap br-1">
         <div className="overlay op-6"></div>

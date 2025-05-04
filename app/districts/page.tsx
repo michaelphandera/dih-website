@@ -16,7 +16,7 @@ export default function DistrictsPage() {
 
   // Show a loading state while the redirect happens
   return (
-    <div className="content pt-5 text-center">
+    <div className="content text-center">
       <section className="ptb-100">
         <div className="container">
           <h2>Loading Districts...</h2>

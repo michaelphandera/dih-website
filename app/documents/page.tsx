@@ -10,7 +10,7 @@ export default function DocumentsPage() {
   const categories = ['all', 'plans', 'reports', 'guidelines', 'manuals'];
 
   return (
-    <div className="page-wrapper pt-5">
+    <div className="page-wrapper">
       <section className="breadcrumb-wrap br-1">
         <div className="overlay op-6" />
         <div className="container">

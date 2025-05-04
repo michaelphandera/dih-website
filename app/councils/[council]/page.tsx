@@ -1,16 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import EmergencyModal from "@/components/EmergencyModal";
 import CookieConsent from "@/components/CookieConsent";
 import { CouncilActivityTabs } from "../council-activity-tabs";
 import councilData, { CouncilKey, CouncilDataType } from '../council-data';
+import PageTransition from "@/components/PageTransition";
+import SectionLoader from "@/components/SectionLoader";
+import { useLoading } from "@/contexts/LoadingContext";
 
 const CouncilDetails: React.FC = () => {
   const params = useParams();
   const router = useRouter();
   const councilId = params.council as string;
+  const { startLoading, stopLoading } = useLoading();
+
+  // State for loading
+  const [isLoading, setIsLoading] = useState(true);
+  const [isDataLoading, setIsDataLoading] = useState(true);
 
   // State for currently selected council
   const [selectedCouncil, setSelectedCouncil] = useState<CouncilKey>(
@@ -35,26 +43,67 @@ const CouncilDetails: React.FC = () => {
   const [showEmergencyModal, setShowEmergencyModal] = useState(false);
   const [showCookieConsent, setShowCookieConsent] = useState(false);
 
-  // Effect to handle URL parameter changes
+  // Combined loading effect for initial load and data changes
   useEffect(() => {
-    if (councilId && councilData[councilId as CouncilKey]) {
-      setSelectedCouncil(councilId as CouncilKey);
-    } else if (councilId && !councilData[councilId as CouncilKey]) {
-      // Redirect to default council if invalid council ID is provided
-      router.push('/councils/agriculture');
-    }
-  }, [councilId, router]);
+    // Start global loading on component mount
+    startLoading();
+    setIsLoading(true);
+    setIsDataLoading(true);
 
-  // Update current council data when selected council changes
+    // Create a loading timeout ID reference
+    let loadingTimeoutId: NodeJS.Timeout;
+
+    // Function to handle data loading
+    const loadCouncilData = () => {
+      // Process council ID from URL
+      if (councilId && councilData[councilId as CouncilKey]) {
+        setSelectedCouncil(councilId as CouncilKey);
+        setCurrentCouncilData(councilData[councilId as CouncilKey]);
+      } else if (councilId && !councilData[councilId as CouncilKey]) {
+        // Redirect to default council if invalid council ID is provided
+        router.push('/councils/agriculture');
+        return; // Exit early as we're redirecting
+      }
+
+      // Set a timeout to ensure loading states are cleared
+      loadingTimeoutId = setTimeout(() => {
+        stopLoading();
+        setIsLoading(false);
+        setIsDataLoading(false);
+      }, 800);
+    };
+
+    // Load the data
+    loadCouncilData();
+
+    // Cleanup function
+    return () => {
+      clearTimeout(loadingTimeoutId);
+      stopLoading();
+    };
+  }, [councilId, router, startLoading, stopLoading]);
+
+  // Handle council selection changes (when user selects from dropdown)
   useEffect(() => {
+    // Skip on initial render or when council matches URL
+    if (selectedCouncil === councilId) {
+      return;
+    }
+
+    setIsDataLoading(true);
+
     const council = councilData[selectedCouncil];
     if (council) {
+      // Update data
       setCurrentCouncilData(council);
 
       // Update URL when council changes (without full page reload)
-      if (selectedCouncil !== councilId) {
-        router.push(`/councils/${selectedCouncil}`, { scroll: false });
-      }
+      router.push(`/councils/${selectedCouncil}`, { scroll: false });
+
+      // Clear loading state after a delay
+      setTimeout(() => {
+        setIsDataLoading(false);
+      }, 600);
     }
   }, [selectedCouncil, councilId, router]);
 
@@ -148,26 +197,29 @@ const CouncilDetails: React.FC = () => {
     }
   };
 
+  // Loaders removed as requested
+
   return (
-    <div className="content pt-5">
-      {/* Council Header Section */}
-      <section className="breadcrumb-wrap br-1">
-        <div className="overlay op-6"></div>
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="breadcrumb-title text-center">
-                <h2>{currentCouncilData.title}</h2>
-                <ul className="breadcrumb-menu list-style">
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/councils">Councils</a></li>
-                  <li>{currentCouncilData.name}</li>
-                </ul>
+    <PageTransition forceLoading={isDataLoading}>
+      <div className="content">
+        {/* Council Header Section */}
+        <section className="breadcrumb-wrap br-1">
+          <div className="overlay op-6"></div>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="breadcrumb-title text-center">
+                  <h2>{currentCouncilData.title}</h2>
+                  <ul className="breadcrumb-menu list-style">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/councils">Councils</a></li>
+                    <li>{currentCouncilData.name}</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       <section className="ptb-100 bg-sand">
         <div className="container">
@@ -356,70 +408,71 @@ const CouncilDetails: React.FC = () => {
 
             {/* Right Side: Content */}
             <div className="col-lg-9 col-md-8">
-              {/* Council Overview */}
-              <div className="row mb-5">
-                <div className="col-lg-8">
-                  <div className="section-title style3 mb-30">
-                    <div className="row align-items-center">
-                      <div className="col-lg-7 col-md-6">
-                        <span>Council Profile</span>
+                  {/* Council Overview */}
+                  <div className="row mb-5">
+                    <div className="col-lg-8">
+                      <div className="section-title style3 mb-30">
+                        <div className="row align-items-center">
+                          <div className="col-lg-7 col-md-6">
+                            <span>Council Profile</span>
+                          </div>
+                          <div className="col-lg-5 col-md-6">
+                            <div className="council-dropdown-wrapper text-md-end mb-30">
+                              <select
+                                id="council-dropdown"
+                                className="form-select dropdown-select"
+                                value={selectedCouncil}
+                                onChange={handleCouncilChange}
+                                disabled={isDataLoading}
+                              >
+                                <option value="" disabled>Change Council</option>
+                                <option value="agriculture">Agriculture</option>
+                                <option value="civil-service">Civil Service</option>
+                                <option value="education">Education</option>
+                                <option value="external-affairs">External Affairs</option>
+                                <option value="disaster-management">Disaster Management</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <h2>{currentCouncilData.name} Overview</h2>
                       </div>
-                      <div className="col-lg-5 col-md-6">
-                        <div className="council-dropdown-wrapper text-md-end mb-30">
-                          <select
-                            id="council-dropdown"
-                            className="form-select dropdown-select"
-                            value={selectedCouncil}
-                            onChange={handleCouncilChange}
-                          >
-                            <option value="" disabled>Change Council</option>
-                            <option value="agriculture">Agriculture</option>
-                            <option value="civil-service">Civil Service</option>
-                            <option value="education">Education</option>
-                            <option value="external-affairs">External Affairs</option>
-                            <option value="disaster-management">Disaster Management</option>
-                          </select>
+                      <div className="about-content fade-in">
+                        <p>{currentCouncilData.description}</p>
+                        <div className="row mt-4">
+                          <div className="col-md-6">
+                            <ul className="content-feature-list list-style">
+                              <li><i className="ri-checkbox-circle-line"></i>Established: {currentCouncilData.established}</li>
+                              <li><i className="ri-checkbox-circle-line"></i>Total Members: {currentCouncilData.memberCount}</li>
+                              <li><i className="ri-checkbox-circle-line"></i>Ministerial Representation: {currentCouncilData.ministerialRepresentation}</li>
+                            </ul>
+                          </div>
+                          <div className="col-md-6">
+                            <ul className="content-feature-list list-style">
+                              <li><i className="ri-checkbox-circle-line"></i>Coordination Centers: {currentCouncilData.coordinationCenters}</li>
+                              <li><i className="ri-checkbox-circle-line"></i>Response Teams: {currentCouncilData.responseTeams}</li>
+                              <li><i className="ri-checkbox-circle-line"></i>Annual Budget: {currentCouncilData.annualBudget}</li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <h2>{currentCouncilData.name} Overview</h2>
-                  </div>
-                  <div className="about-content">
-                    <p>{currentCouncilData.description}</p>
-                    <div className="row mt-4">
-                      <div className="col-md-6">
-                        <ul className="content-feature-list list-style">
-                          <li><i className="ri-checkbox-circle-line"></i>Established: {currentCouncilData.established}</li>
-                          <li><i className="ri-checkbox-circle-line"></i>Total Members: {currentCouncilData.memberCount}</li>
-                          <li><i className="ri-checkbox-circle-line"></i>Ministerial Representation: {currentCouncilData.ministerialRepresentation}</li>
-                        </ul>
-                      </div>
-                      <div className="col-md-6">
-                        <ul className="content-feature-list list-style">
-                          <li><i className="ri-checkbox-circle-line"></i>Coordination Centers: {currentCouncilData.coordinationCenters}</li>
-                          <li><i className="ri-checkbox-circle-line"></i>Response Teams: {currentCouncilData.responseTeams}</li>
-                          <li><i className="ri-checkbox-circle-line"></i>Annual Budget: {currentCouncilData.annualBudget}</li>
+                    <div className="col-lg-4">
+                      <div className="card h-100 bg-white p-3 shadow-sm">
+                        <h5 className="card-title p-2 border-bottom">Council Leadership</h5>
+                        <div className="text-center mb-3">
+                          <img src="/img/raj.png" alt="Council Chair" className="rounded-circle mb-3" width={150} />
+                          <h6>{currentCouncilData.leadership.name}</h6>
+                          <p className="text-muted">{currentCouncilData.leadership.position}</p>
+                        </div>
+                        <ul className="list-unstyled">
+                          <li className="mb-2"><strong>Appointment:</strong> {currentCouncilData.leadership.appointment}</li>
+                          <li className="mb-2"><strong>Tenure:</strong> {currentCouncilData.leadership.tenure}</li>
+                          <li><strong>Background:</strong> {currentCouncilData.leadership.background}</li>
                         </ul>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-lg-4">
-                  <div className="card h-100 bg-white p-3 shadow-sm">
-                    <h5 className="card-title p-2 border-bottom">Council Leadership</h5>
-                    <div className="text-center mb-3">
-                      <img src="/img/raj.png" alt="Council Chair" className="rounded-circle mb-3" width={150} />
-                      <h6>{currentCouncilData.leadership.name}</h6>
-                      <p className="text-muted">{currentCouncilData.leadership.position}</p>
-                    </div>
-                    <ul className="list-unstyled">
-                      <li className="mb-2"><strong>Appointment:</strong> {currentCouncilData.leadership.appointment}</li>
-                      <li className="mb-2"><strong>Tenure:</strong> {currentCouncilData.leadership.tenure}</li>
-                      <li><strong>Background:</strong> {currentCouncilData.leadership.background}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
 
               {/* Council Activity Tabs */}
               <CouncilActivityTabs councilId={selectedCouncil} />
@@ -432,6 +485,7 @@ const CouncilDetails: React.FC = () => {
       {showEmergencyModal && <EmergencyModal show={true} onClose={() => setShowEmergencyModal(false)} />}
       {showCookieConsent && <CookieConsent />}
     </div>
+    </PageTransition>
   );
 };
 
