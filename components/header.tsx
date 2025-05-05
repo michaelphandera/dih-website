@@ -201,7 +201,15 @@ export function Header() {
                     <li className="nav-item">
                       <Link href="/resources/manuals" className={`nav-link ${isActive('/resources/manuals') ? 'active' : ''}`}>User Manuals</Link>
                     </li>
+                    <li className="nav-item">
+                      <Link href="/weather" className={`nav-link ${isActive('/weather') ? 'active' : ''}`}>Weather</Link>
+                    </li>
                   </ul>
+                </li>
+                <li className="nav-item">
+                  <Link href="/weather" className={`nav-link ${isActive('/weather') ? 'active' : ''}`}>
+                     Weather
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link href="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>
